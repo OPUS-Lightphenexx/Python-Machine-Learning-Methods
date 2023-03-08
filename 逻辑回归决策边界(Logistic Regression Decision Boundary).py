@@ -31,5 +31,18 @@ print(model.intercept_)
 x1_plot = np.linspace(0, 10,100)
 x2_plot = (-model.coef_[0][0] * x1_plot - model.intercept_[0]) / model.coef_[0][1]
 plt.plot(x1_plot,x2_plot)
+#画等高线
+axis = [0,13,0,8]
+x0,x1 = np.meshgrid(np.linspace(axis[0],axis[1],int((axis[1]-axis[0])*100)).reshape(-1,1),np.linspace(axis[2],axis[3],int((axis[3]-axis[2])*100)).reshape(-1,1))
+X_new = np.c_[x0.ravel(),x1.ravel()]
+y_predict = model.predict(X_new)
+zz = y_predict.reshape(x0.shape)
+print(zz)
+custom_cmap = ListedColormap(['#EF9A9B', '#FFF583', '#90CAF9'])
+
+plt.contourf(x0, x1, zz, linewidth=5, cmap=custom_cmap)
+plt.scatter(x_is_0,y_is_0,color='r')
+plt.scatter(x_is_1,y_is_1,color='b')
+
 plt.show()
 
