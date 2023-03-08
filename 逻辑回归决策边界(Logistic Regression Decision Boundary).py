@@ -38,8 +38,8 @@ x2_plot = (-model.coef_[0][0] * x1_plot - model.intercept_[0]) / model.coef_[0][
 #画等高线
 axis = [0,13,0,8]
 x0,x1 = np.meshgrid(np.linspace(axis[0],axis[1],int((axis[1]-axis[0])*100)).reshape(-1,1),np.linspace(axis[2],axis[3],int((axis[3]-axis[2])*100)).reshape(-1,1))
-X_new = np.c_[x0.ravel(),x1.ravel()]
-y_predict = model.predict(X_new)
+X_reset = np.c_[x0.ravel(),x1.ravel()]
+y_predict = model.predict(X_reset)
 zz = y_predict.reshape(x0.shape)
 print(zz)
 custom_cmap = ListedColormap(['#EF9A9B', '#FFF583', '#90CAF9'])
