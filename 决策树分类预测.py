@@ -61,9 +61,15 @@ d_x_test = np.array([[1,1,1,1,1,1],
 d_y_test_label = np.array([1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0])
 plt.scatter(d_x_test[:,0],d_x_test[:,1],c=d_y_test_label)
 
-tree_clf.fit(d_x_test,d_y_test_label)
+tree_model_test1 = tree_clf.fit(d_x_test,d_y_test_label)
 
 x_test_111 = np.array([[2,4,3,2,4,5]])
 new_predict = tree_clf.predict(x_test_111)
 print(new_predict)
+
+from sklearn import tree
+import graphviz
+dot_data = tree.export_graphviz(tree_model_test1,out_file=None)
+graph = graphviz.Source(dot_data)
+graph.render('testtest1again')
 
