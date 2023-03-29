@@ -60,6 +60,7 @@ d_x_test = np.array([[1,1,1,1,1,1],
                      [1,1,2,2,2,1]])
 d_y_test_label = np.array([1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0])
 plt.scatter(d_x_test[:,0],d_x_test[:,1],c=d_y_test_label)
+plt.show()
 
 tree_model_test1 = tree_clf.fit(d_x_test,d_y_test_label)
 
@@ -71,5 +72,21 @@ from sklearn import tree
 import graphviz
 dot_data = tree.export_graphviz(tree_model_test1,out_file=None)
 graph = graphviz.Source(dot_data)
-graph.render('testtest1again',view=True)
+graph.render('决策树画图',view=False)
 
+#机器学习分类
+from sklearn.datasets import make_blobs
+np.random.seed(48782)
+X, y = make_blobs(n_samples=1000, n_features=1, centers=[[-1,-1], [1,1]], cluster_std=[0.4, 0.5])
+plt.scatter(X[:, 0], X[:, 1],c=y)
+plt.title('make-blobs')
+plt.show()
+
+x_data_1_d = X
+y_1_d_label = y
+
+tree_model_test2 = tree_clf.fit(x_data_1_d,y_1_d_label)
+
+dot_data_ML = tree.export_graphviz(tree_model_test2,out_file=None)
+graph_ML = graphviz.Source(dot_data_ML)
+graph_ML.render('机器学习决策树画图sklearn',view=True)
