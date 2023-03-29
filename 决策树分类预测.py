@@ -71,5 +71,5 @@ from sklearn import tree
 import graphviz
 dot_data = tree.export_graphviz(tree_model_test1,out_file=None)
 graph = graphviz.Source(dot_data)
-graph.render('testtest1again')
+graph.render('testtest1again',view=True)
 
