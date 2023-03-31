@@ -91,15 +91,11 @@ plt.title('Score Comparison Between Random Forest,Decision Tree\n'
               'Naive Bayes Gaussian and Naive Bayes Multinomial')
 plt.legend(ncol=2,prop = {'size':7})
 xticks = range(0,k,1)
+yticks = (0.8,0.85,0.9,0.95,1)
 plt.xticks(xticks)
+plt.yticks(yticks)
 plt.grid()
 plt.show()
-
-
-
-
-
-
 
 
 
