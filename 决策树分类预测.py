@@ -90,3 +90,5 @@ tree_model_test2 = tree_clf.fit(x_data_1_d,y_1_d_label)
 dot_data_ML = tree.export_graphviz(tree_model_test2,out_file=None)
 graph_ML = graphviz.Source(dot_data_ML)
 graph_ML.render('机器学习决策树画图sklearn',view=True)
+
+
