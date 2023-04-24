@@ -24,7 +24,7 @@ def func(x_i,w_i,h):
 
 #用sklearn节省调参过程
 #利用pandas创建表格
-Dict = {'x1':[1,4,3,2,5,6,7,7],'x2':[4,8,6,3,5,6,13],'label':[0,0,0,1,1,1,1]}
+Dict = {'x1':[1,4,3,2,5,6,6,7],'x2':[4,8,6,3,5,6,13,14],'label':[0,0,0,1,1,1,0,0]}
 Data_table = pd.DataFrame(Dict)
 print(Data_table)
 perceptron = Perceptron(fit_intercept=True, max_iter=1000, shuffle=True)
@@ -41,6 +41,14 @@ print(b)
 plt.scatter(Data_table['x1'],Data_table['x2'],c=Data_table['label'])
 xs = np.linspace(0,7,100)
 plt.plot(xs,(w_ip[0]*xs+b)/(-w_ip[1]))
+plt.title('Perceptron Using Sklearn')
+text1 = r'$w_1=14,w_2=-9$'
+text2 = r'$b=5$'
+text3 = r'$f(x)=sign(wx+b)$'
+plt.text(0,13,text1,fontsize=17)
+plt.text(0,11,text2,fontsize=17)
+plt.text(0,9,text3,fontsize=17)
+plt.grid()
 plt.show()
 
 
