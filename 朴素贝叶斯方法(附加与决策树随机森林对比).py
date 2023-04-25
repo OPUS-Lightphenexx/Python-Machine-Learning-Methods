@@ -5,12 +5,15 @@ import matplotlib.pyplot as plt
 from sklearn.datasets import load_wine
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
+import time
+
+start = time.time()
 
 RandomForest_Score = []
 DecisionTree_Score = []
 NaiveBayes_GaussianScore = []
 NaiveBayes_MultinomialScore = []
-k = 10
+k = 100
 for i in range(k):
     np.random.seed(i)
     wine = load_wine()
@@ -90,7 +93,7 @@ plt.ylabel('Scores')
 plt.title('Score Comparison Between Random Forest,Decision Tree\n'
               'Naive Bayes Gaussian and Naive Bayes Multinomial')
 plt.legend(ncol=2,prop = {'size':7})
-xticks = range(0,k,1)
+xticks = range(0,k,10)
 yticks = (0.8,0.85,0.9,0.95,1)
 plt.xticks(xticks)
 plt.yticks(yticks)
@@ -98,6 +101,10 @@ plt.grid()
 plt.show()
 
 
+
+
+end = time.time()
+print('程序运行时间为: %s Seconds' % (end - start))
 
 
 

@@ -2,7 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.svm import LinearSVC
+import time
 
+start = time.time()
 #沿用感知机模型里面的数据
 Dict = {'x1':[1,4,3,2,5,6,6,7],'x2':[4,8,6,3,5,6,13,14],'label':[0,0,0,1,1,1,0,0]}
 Data_table = pd.DataFrame(Dict)
@@ -15,6 +17,8 @@ svm_model = LinearSVC()
 svm_model.fit(Data_table[['x1','x2']],Data_table['label'])
 w_i = svm_model.coef_[0]
 b = svm_model.intercept_
+score = svm_model.score(Data_table[['x1','x2']],Data_table['label'])
+print(score)
 print(w_i)
 print(b)
 
@@ -40,3 +44,11 @@ plt.text(0,11,text2,fontsize=17)
 plt.text(0,9,text3,fontsize = 17)
 plt.grid()
 plt.show()
+
+
+
+end = time.time()
+print('程序运行时间为: %s Seconds' % (end - start))
+
+time = end-start
+
