@@ -48,6 +48,8 @@ text3 = r'$f(x)=sign(wx+b)$'
 plt.text(0,13,text1,fontsize=17)
 plt.text(0,11,text2,fontsize=17)
 plt.text(0,9,text3,fontsize=17)
+plt.xlabel('X')
+plt.ylabel('Y')
 plt.grid()
 plt.show()
 
