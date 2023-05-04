@@ -30,6 +30,3 @@ Train = Model.fit(x_data,y_data_label)
 predict = Model.predict(np.array([[1,4]]))
 print(predict)
 print(Model.estimators_)
-
-
-
