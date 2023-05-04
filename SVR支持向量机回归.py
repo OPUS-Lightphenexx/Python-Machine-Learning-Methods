@@ -8,11 +8,12 @@ Dict = {'x1':[1,4,3,2,5,6,6,7],'x2':[4,8,6,3,5,6,13,14]}
 X_Data = np.array([1,4,3,2,5,6]).reshape(-1,1)
 Y_Data = np.array([4,8,6,3,5,6]).reshape(-1,1)
 
-model1 = SVR(kernel='linear')
+model1 = SVR(kernel='linear',epsilon=1)
 model1.fit(X_Data,Y_Data)
 X_test = np.linspace(0,8,100).reshape(-1,1)
 y = model1.predict(X_test)
 model1_score = model1.score(X_Data,Y_Data)
+print(model1_score)
 
 model3 = SVR(kernel='rbf')
 model3.fit(X_Data,Y_Data)
@@ -24,6 +25,7 @@ model2 = LinearRegression()
 model2.fit(X_Data,Y_Data)
 y1 = model2.predict(X_test)
 model2_score = model2.score(X_Data,Y_Data)
+print(model2_score)
 
 model4 = SVR(kernel='sigmoid')
 model4.fit(X_Data,Y_Data)
@@ -83,6 +85,26 @@ def Draw_plot_SVR_Linear(x:list,y:list):
 
 print(Draw_plot_SVR_Sigmoid([1,2,3,4,5,6,7],[4,5,4,6,3,2,6]))
 print(Draw_plot_SVR_Linear([1,2,3,4,5,6,7],[4,5,4,6,3,8,6]))
+
+#统计拟合度
+score_list = []
+for i in np.linspace(0,2,20):
+    model1 = SVR(kernel='linear', epsilon=i)
+    model1.fit(X_Data, Y_Data)
+    X_test = np.linspace(0, 8, 100).reshape(-1, 1)
+    y = model1.predict(X_test)
+    model1_score = model1.score(X_Data, Y_Data)
+    score_list.append(model1_score)
+
+print(score_list)
+
+plt.plot(score_list)
+plt.title('SVR Linear Model Scores')
+plt.xlabel('$\epsilon$',fontsize=20)
+plt.ylabel('Scores')
+plt.grid()
+plt.show()
+
 
 
 
