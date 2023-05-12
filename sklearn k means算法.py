@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
+import scikitplot as skplt
 
 #原始数据
 train_x_test = np.array([[90,100],[88,90],[85,95],[10,20],[30,40],[50,30],[80,56],[67,80],[90,90]])
@@ -24,12 +25,21 @@ for i in range(2,10):
 #画图
 plt.subplot(221)
 plt.scatter(plot_x,plot_y,c=cluster2)
+plt.grid()
 plt.subplot(222)
 plt.scatter(plot_x,plot_y,c=cluster3)
+plt.grid()
 plt.subplot(223)
 plt.scatter(plot_x,plot_y,c=cluster5)
+plt.grid()
 plt.subplot(224)
 plt.plot(range(2,10),SSE_data,label='SSE')
+plt.grid()
 plt.title('SSE')
 
+plt.show()
+
+kmeans = KMeans(random_state=1)
+
+skplt.cluster.plot_elbow_curve(kmeans,train_x_test,cluster_ranges=(1,9))
 plt.show()

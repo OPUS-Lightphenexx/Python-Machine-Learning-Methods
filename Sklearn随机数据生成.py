@@ -36,6 +36,14 @@ plt.show()
 print(random_test_1)
 print(random_test_1_label)
 
+x = np.linspace(-1,1,100)
+for n in range(100):
+    y = x**n
+    plt.plot(x,y)
+plt.grid()
+plt.show()
+
+
 
 
 
